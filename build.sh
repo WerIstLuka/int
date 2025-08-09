@@ -113,7 +113,7 @@ make_debian_package () {
 	cp linux-$1 "int_${pkgversion}_$1/usr/bin/int"
 	chmod -w "int_${pkgversion}_$1/usr/bin/int"
 	chmod +x "int_${pkgversion}_$1/usr/bin/int"
-	dpkg-deb --build "int_${pkgversion}_$1"
+	dpkg-deb --root-owner-group --build "int_${pkgversion}_$1"
 	rm -rf "int_${pkgversion}_$1"
 }
 
