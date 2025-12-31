@@ -10,7 +10,7 @@ import (
 	"math/big"
 )
 
-var Version string = "2.0.3"
+var Version string = "2.0.4"
 
 func Help(){
 	fmt.Println(`Convert any base to any other

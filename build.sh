@@ -105,16 +105,16 @@ pushd build >> /dev/null
 
 make_debian_package () {
 	installsize=$(du -ks "linux-$1"|cut -f 1)
-	mkdir -p int_${pkgversion}_$1/{DEBIAN,usr/bin}
-	cp ../control "int_${pkgversion}_$1/DEBIAN"
-	sed -i -e "s/pkgver/${pkgversion}/g" "int_${pkgversion}_$1/DEBIAN/control"
-	sed -i -e "s/pkgarch/$1/g" "int_${pkgversion}_$1/DEBIAN/control"
-	sed -i -e "s/pkgsize/$installsize/g" "int_${pkgversion}_$1/DEBIAN/control"
-	cp linux-$1 "int_${pkgversion}_$1/usr/bin/int"
-	chmod -w "int_${pkgversion}_$1/usr/bin/int"
-	chmod +x "int_${pkgversion}_$1/usr/bin/int"
-	dpkg-deb --root-owner-group --build "int_${pkgversion}_$1"
-	rm -rf "int_${pkgversion}_$1"
+	mkdir -p int_$1/{DEBIAN,usr/bin}
+	cp ../control "int_$1/DEBIAN"
+	sed -i -e "s/pkgver/${pkgversion}/g" "int_$1/DEBIAN/control"
+	sed -i -e "s/pkgarch/$1/g" "int_$1/DEBIAN/control"
+	sed -i -e "s/pkgsize/$installsize/g" "int_$1/DEBIAN/control"
+	cp linux-$1 "int_$1/usr/bin/int"
+	chmod -w "int_$1/usr/bin/int"
+	chmod +x "int_$1/usr/bin/int"
+	dpkg-deb --root-owner-group --build "int_$1"
+	rm -rf "int_$1"
 }
 
 make_debian_package amd64
